@@ -1,0 +1,11 @@
+name: Deploy Platform Config
+on:
+push:
+branches: [main]
+jobs:
+validate:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v4
+- name: Validate Kubernetes manifests
+run: kubectl apply --dry-run=client -f kubernetes/
